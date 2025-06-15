@@ -63,6 +63,66 @@ section {
   width: 0%;
   transition: width 0.5s;
 }
+
+.funding p {
+  margin: 15px 0;
+}
+
+.funding {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.funding .progress-bar {
+  background: #444;
+  height: 25px;
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.funding .progress {
+  background: #4caf50;
+  height: 100%;
+  width: 0%;
+  transition: width 0.6s ease;
+}
+
+.funding-text {
+  margin: 15px 0;
+  font-size: 1.1em;
+  color: #ddd;
+}
+
+.donate-btn {
+  display: inline-block;
+  margin: 20px 0 10px;
+  padding: 12px 24px;
+  font-size: 1em;
+  background-color: #e91e63;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.donate-btn:hover {
+  background-color: #c2185b;
+}
+
+.secure-note {
+  font-size: 0.9em;
+  color: #bbb;
+  margin-top: 10px;
+}
+
+
+.donate-btn:hover {
+  background-color: #c2185b;
+}
+
 .rewards ul {
   list-style: none;
   padding: 0;
@@ -86,8 +146,3 @@ footer {
   font-size: 0.9em;
 }
 
-.secure-note {
-  margin-top: 10px;
-  font-size: 0.9em;
-  color: #ccc;
-}
