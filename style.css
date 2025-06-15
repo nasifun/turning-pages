@@ -85,3 +85,9 @@ footer {
   padding: 20px;
   font-size: 0.9em;
 }
+
+.secure-note {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #ccc;
+}
