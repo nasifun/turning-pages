@@ -90,6 +90,7 @@ section {
 }
 
 .funding-text {
+    
   margin: 15px 0;
   font-size: 1.1em;
   color: #ddd;
@@ -109,7 +110,7 @@ section {
 }
 
 .donate-btn:hover {
-  background-color: #c2185b;
+  background-color: #1cbeb0;
 }
 
 .secure-note {
