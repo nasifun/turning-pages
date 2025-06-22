@@ -178,3 +178,87 @@ canvas {
   display: block;
   border: 1px solid #444;
 }
+
+/* === EPISODE FUNDING SECTION === */
+.episodes {
+  padding: 3rem 1rem;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.episodes h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #f7931a;
+}
+
+.episode {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.episode img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 2px solid #f7931a;
+}
+
+.episode h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #f7931a;
+}
+
+.episode p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.episode .btn {
+  background-color: #f7931a;
+  color: #000;
+  padding: 0.6rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.episode .btn:hover {
+  background-color: #e57c00;
+}
+
+/* === TERMS SECTION === */
+.terms {
+  background: #222;
+  color: #ccc;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.terms h2 {
+  font-size: 2rem;
+  color: #f7931a;
+  margin-bottom: 1rem;
+}
+
+.terms a {
+  color: #f7931a;
+  text-decoration: underline;
+}
+
+.terms strong {
+  color: #fff;
+}
