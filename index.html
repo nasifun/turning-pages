@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TURNING POINT: SERIES - Crowdfunding Campaign</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -26,6 +27,18 @@
   </section>
 
   <section class="funding" id="donate">
+ turning-pages
+    <h2>Funding Progress</h2>
+    <div class="progress-bar">
+      <div class="progress" style="width: 0%;"></div>
+    </div>
+    <p class="funding-text">Raised: €66 / Goal: €200,000</p>
+    <a href="https://payment-links.mollie.com/payment/Ei7TmJKyZNhUHdJXGhgPh" target="_blank" class="btn donate-btn">
+      Donate via iDEAL / Credit Card
+    </a>
+    <p class="secure-note">Payments securely processed via Mollie</p>
+  </section>
+
   <h2>Funding Progress</h2>
 
   <!-- Progress Bar -->
@@ -48,6 +61,7 @@
 </section>
 
 
+ main
 
   <section class="rewards">
     <h2>Supporter Rewards</h2>
@@ -59,13 +73,24 @@
     </ul>
   </section>
 
+  <section class="chart-section">
+  <h2>Live Donation Volatility</h2>
+
+  <!-- ✅ Live-updating total -->
+  <p id="live-total" style="font-size: 2em; color: #4caf50;">€0</p>
+
+  <!-- ✅ Chart canvas -->
+  <canvas id="crowdChart"></canvas>
+</section>
+
+
   <section class="gallery">
     <h2>Behind the Scenes</h2>
     <img src="landing-image.jpg" alt="Afro Rainfall Poster" />
   </section>
 
   <footer>
-    <p>&copy; 2025 AFRO TV SERIES | Contact: info@turningpages.com</p>
+    <p>&copy; 2025 TURNING POINT TV SERIES | Contact: info@turningpages.com</p>
   </footer>
 
   <script src="script.js"></script>
