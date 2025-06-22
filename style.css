@@ -326,3 +326,50 @@ canvas {
 .form-section .btn:hover {
   background-color: #ffa733;
 }
+
+/* ===== Success Page Styling ===== */
+.success-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #111;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.success-box {
+  text-align: center;
+  padding: 40px;
+  background-color: #1d1d1d;
+  border: 2px solid #f7931a;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  max-width: 500px;
+}
+
+.success-box h2 {
+  font-size: 2rem;
+  color: #f7931a;
+  margin-bottom: 15px;
+}
+
+.success-box p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.success-box .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f7931a;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.success-box .btn:hover {
+  background-color: #ffa733;
+}
