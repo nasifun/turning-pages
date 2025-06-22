@@ -262,3 +262,67 @@ canvas {
 .terms strong {
   color: #fff;
 }
+
+/* ===== Form Section Styling ===== */
+.form-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #111;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  font-family: 'Arial', sans-serif;
+}
+
+.form-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #f7931a;
+}
+
+.form-section label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.form-section input[type="text"],
+.form-section input[type="email"],
+.form-section input[type="tel"],
+.form-section input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+}
+
+.form-section input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-section a {
+  color: #f7931a;
+  text-decoration: underline;
+}
+
+.form-section .btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 24px;
+  background-color: #f7931a;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-section .btn:hover {
+  background-color: #ffa733;
+}
