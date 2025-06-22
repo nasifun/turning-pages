@@ -1,0 +1,55 @@
+<!-- Template for all 8 episodes -->
+<!-- Change "1" in episode1-signin.html to 2, 3, ..., 8 accordingly -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund Episode 1 - Turning Point</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="form-section">
+    <h2>Fund Episode 1: "Love in the Mist"</h2>
+    <form action="/submit" method="POST">
+      <input type="hidden" name="episode" value="Episode 1: Love in the Mist">
+
+      <label for="fullName">Full Name</label>
+      <input type="text" name="fullName" id="fullName" required>
+
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" required>
+
+      <label for="company">Company Name</label>
+      <input type="text" name="company" id="company" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" name="phone" id="phone" required>
+
+      <label for="kvk">KVK Number</label>
+      <input type="text" name="kvk" id="kvk" required>
+
+      <label class="checkbox">
+        <input type="checkbox" name="agree" required>
+        I have read and agree to the <a href="rules.html" target="_blank">Rules of Business Funding</a>
+      </label>
+
+      <label style="display: block; margin-top: 20px;">
+  <input type="checkbox" name="investmentAgreement" required>
+  I have read and agree to the
+  <a href="investment-agreement.html" target="_blank">Investment Agreement</a>.
+</label>
+
+
+
+      <button type="submit" class="btn">Confirm & Fund</button>
+    </form>
+  </section>
+</body>
+</html>
+
+<!-- Duplicate this for episode2-signin.html through episode8-signin.html -->
+<!-- Change title, h2, and hidden episode input each time -->
