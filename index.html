@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TURNING POINT: SERIES - Crowdfunding Campaign</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -21,33 +22,21 @@
     <p>
       "TURNING POINT" tells the story of a forgotten rebellion, hidden deep in the jungles of Africa. 
       As secrets emerge, communities are forced to face their past and fight for their future. 
-      This TV series blends historical fiction, suspense, and Afro-realism in a raw, immersive journey. MEET AND GREET COMING SOON! SOON!
+      This TV series blends historical fiction, suspense, and Afro-realism in a raw, immersive journey.
     </p>
   </section>
 
   <section class="funding" id="donate">
-  <h2>Funding Progress</h2>
-
-  <!-- Progress Bar -->
-  <div class="progress-bar">
-    <div class="progress" style="width: 0%;"></div>
-  </div>
-
-  <!-- Funding Text -->
-  <p class="funding-text">Raised: €66 / Goal: €200,000</p>
-
-  <!-- Donation Button -->
-  <a href="https://payment-links.mollie.com/payment/Ei7TmJKyZNhUHdJXGhgPh" 
-     target="_blank" 
-     class="btn donate-btn">
-    Donate via iDEAL / Credit Card
-  </a>
-
-  <!-- Secure Note -->
-  <p class="secure-note">Payments securely processed via Mollie</p>
-</section>
-
-
+    <h2>Funding Progress</h2>
+    <div class="progress-bar">
+      <div class="progress" style="width: 0%;"></div>
+    </div>
+    <p class="funding-text">Raised: €66 / Goal: €200,000</p>
+    <a href="https://payment-links.mollie.com/payment/Ei7TmJKyZNhUHdJXGhgPh" target="_blank" class="btn donate-btn">
+      Donate via iDEAL / Credit Card
+    </a>
+    <p class="secure-note">Payments securely processed via Mollie</p>
+  </section>
 
   <section class="rewards">
     <h2>Supporter Rewards</h2>
@@ -59,13 +48,19 @@
     </ul>
   </section>
 
+  <section class="chart-section">
+    <h2>Live Donation Volatility</h2>
+    <canvas id="crowdChart"></canvas>
+    <button id="donateBtn" class="btn">Simulate Donation</button>
+  </section>
+
   <section class="gallery">
     <h2>Behind the Scenes</h2>
     <img src="landing-image.jpg" alt="Afro Rainfall Poster" />
   </section>
 
   <footer>
-    <p>&copy; 2025 AFRO TV SERIES | Contact: info@turningpages.com</p>
+    <p>&copy; 2025 TURNING POINT TV SERIES | Contact: info@turningpages.com</p>
   </footer>
 
   <script src="script.js"></script>

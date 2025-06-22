@@ -146,3 +146,35 @@ footer {
   font-size: 0.9em;
 }
 
+canvas {
+  background: #111;
+  max-width: 100%;
+  margin: 20px auto;
+  display: block;
+  border: 1px solid #444;
+}
+
+#donateBtn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.chart-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+canvas {
+  background: #111;
+  max-width: 100%;
+  margin: 20px auto;
+  display: block;
+  border: 1px solid #444;
+}
