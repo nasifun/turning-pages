@@ -94,3 +94,40 @@ app.post('/submit', async (req, res) => {
 app.listen(5000, () => {
   console.log('🚀 Server running on http://localhost:5000');
 });
+
+
+// Mollie API integration
+const axios = require('axios'); // Make sure this is at the top with your other requires
+
+app.get('/api/donations', async (req, res) => {
+  try {
+    const response = await axios.get('https://api.mollie.com/v2/payments', {
+      headers: { Authorization: `Bearer ${process.env.MOLLIE_API_KEY}` }
+    });
+    // Only show successful (paid) donations
+    const paid = response.data._embedded.payments.filter(p => p.status === 'paid');
+    res.json(paid);
+  } catch (error) {
+    console.error('❌ Mollie API Error:', error.message);
+    res.status(500).json({ error: 'Error fetching donations from Mollie' });
+  }
+});
+
+
+const axios = require('axios'); // Place this near your other 'require' lines
+
+// Live Mollie API endpoint (paid donations only)
+app.get('/api/donations', async (req, res) => {
+  try {
+    const response = await axios.get('https://api.mollie.com/v2/payments', {
+      headers: { Authorization: `Bearer ${process.env.MOLLIE_API_KEY}` }
+    });
+    // Filter only PAID donations
+    const paid = response.data._embedded.payments.filter(p => p.status === 'paid');
+    res.json(paid);
+  } catch (error) {
+    console.error('❌ Mollie API Error:', error.message);
+    res.status(500).json({ error: 'Error fetching donations from Mollie' });
+  }
+});
+
