@@ -373,3 +373,14 @@ canvas {
 .success-box .btn:hover {
   background-color: #ffa733;
 }
+
+.episode img {
+  transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1), box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.episode img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(247, 147, 26, 0.16);
+  z-index: 2;
+}
