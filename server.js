@@ -5,9 +5,9 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const axios = require('axios');  // ✅ Only once, at the top
+const axios = require('axios');
 
-// Load env variables
+// Load .env secrets
 dotenv.config();
 
 const app = express();
@@ -90,6 +90,7 @@ app.get('/api/donations', async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
