@@ -48,14 +48,14 @@ const transporter = nodemailer.createTransport({
 // Handle form submission
 app.post('/submit', async (req, res) => {
   try {
+    console.log("POST /submit hit"); // Debug
     const { episode, fullName, address, company, email, phone, kvk } = req.body;
+    console.log("Form data:", req.body); // Debug
 
-    // Save to MongoDB
     const newInvestor = new Investor({ episode, fullName, address, company, email, phone, kvk });
     await newInvestor.save();
-    console.log("✅ Saved to MongoDB");
+    console.log("Saved to MongoDB"); // Debug
 
-    // Send confirmation email
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -66,14 +66,15 @@ app.post('/submit', async (req, res) => {
              <p>– Turning Point Production Team</p>`
     };
     await transporter.sendMail(mailOptions);
-    console.log("📧 Confirmation email sent");
+    console.log("Email sent!"); // Debug
 
     res.status(200).json({ message: 'Submitted successfully!' });
   } catch (error) {
-    console.error('❌ General Server Error:', error);
+    console.error('❌ SERVER ERROR:', error); // <-- this is critical!
     res.status(500).json({ error: 'Server error. Please try again later.' });
   }
 });
+
 
 // Mollie API integration — for LIVE donation chart
 app.get('/api/donations', async (req, res) => {
