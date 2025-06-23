@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
@@ -7,13 +6,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
-// Load .env secrets
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -48,13 +45,13 @@ const transporter = nodemailer.createTransport({
 // Handle form submission
 app.post('/submit', async (req, res) => {
   try {
-    console.log("POST /submit hit"); // Debug
+    console.log("POST /submit hit");
     const { episode, fullName, address, company, email, phone, kvk } = req.body;
-    console.log("Form data:", req.body); // Debug
+    console.log("Form data:", req.body);
 
     const newInvestor = new Investor({ episode, fullName, address, company, email, phone, kvk });
     await newInvestor.save();
-    console.log("Saved to MongoDB"); // Debug
+    console.log("Saved to MongoDB");
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -66,15 +63,14 @@ app.post('/submit', async (req, res) => {
              <p>– Turning Point Production Team</p>`
     };
     await transporter.sendMail(mailOptions);
-    console.log("Email sent!"); // Debug
+    console.log("Email sent!");
 
     res.status(200).json({ message: 'Submitted successfully!' });
   } catch (error) {
-    console.error('❌ SERVER ERROR:', error); // <-- this is critical!
+    console.error('❌ SERVER ERROR:', error);
     res.status(500).json({ error: 'Server error. Please try again later.' });
   }
 });
-
 
 // Mollie API integration — for LIVE donation chart
 app.get('/api/donations', async (req, res) => {
