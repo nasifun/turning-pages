@@ -50,9 +50,18 @@ app.post('/submit', async (req, res) => {
   try {
     const { episode, fullName, address, company, email, phone, kvk } = req.body;
 
+    console.log("📩 Received submission:", req.body);
+
     // Save to MongoDB
     const newInvestor = new Investor({ episode, fullName, address, company, email, phone, kvk });
-    await newInvestor.save();
+
+    try {
+      await newInvestor.save();
+      console.log("✅ Saved to MongoDB");
+    } catch (mongoError) {
+      console.error("❌ MongoDB Save Error:", mongoError);
+      return res.status(500).json({ error: 'Failed to save to MongoDB' });
+    }
 
     // Send confirmation email
     const mailOptions = {
@@ -65,13 +74,18 @@ app.post('/submit', async (req, res) => {
              <p>– Turning Point Production Team</p>`
     };
 
-    await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log("📧 Confirmation email sent");
+    } catch (mailError) {
+      console.error("❌ Email Send Error:", mailError);
+      return res.status(500).json({ error: 'Failed to send confirmation email' });
+    }
 
     res.status(200).json({ message: 'Submitted successfully!' });
+
   } catch (error) {
-    console.error('❌ Error submitting form:', error);
+    console.error('❌ General Server Error:', error);
     res.status(500).json({ error: 'Server error. Please try again later.' });
   }
 });
-
-app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));

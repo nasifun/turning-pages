@@ -46,42 +46,41 @@
   </section>
 
   <script>
-  document.getElementById('donationForm').addEventListener('submit', async function(e) {
-    e.preventDefault(); // Prevent default page reload
+    document.getElementById('donationForm').addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent default page reload
 
-    const form = e.target;
-    const formData = {
-      episode: form.episode.value,
-      fullName: form.fullName.value,
-      address: form.address.value,
-      company: form.company.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      kvk: form.kvk.value,
-    };
+      const form = e.target;
+      const formData = {
+        episode: form.episode.value,
+        fullName: form.fullName.value,
+        address: form.address.value,
+        company: form.company.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        kvk: form.kvk.value,
+      };
 
-    try {
-      const res = await fetch('http://localhost:5000/submit', {  <!-- ✅ UPDATE HERE -->
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      try {
+        const res = await fetch('http://127.0.0.1:5000/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
 
-      const data = await res.json();
-      if (res.ok) {
-        alert('✅ Thank you! Your submission was successful.');
-        window.location.href = 'success.html'; // optional
-      } else {
-        alert('❌ Failed to submit. Please try again.');
+        const data = await res.json();
+        if (res.ok) {
+          alert('✅ Thank you! Your submission was successful.');
+          window.location.href = 'success.html'; // optional redirect
+        } else {
+          alert('❌ Failed to submit. Please try again.');
+        }
+      } catch (err) {
+        alert('❌ Error connecting to server.');
+        console.error(err);
       }
-    } catch (err) {
-      alert('❌ Error connecting to server.');
-      console.error(err);
-    }
-  });
-</script>
+    });
+  </script>
 
-
-
+  
 </body>
 </html>
