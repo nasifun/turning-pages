@@ -384,3 +384,26 @@ canvas {
   box-shadow: 0 8px 30px rgba(247, 147, 26, 0.16);
   z-index: 2;
 }
+
+#crowdChart {
+  max-width: 95vw;
+  width: 900px;
+  height: 350px;
+  margin: 0 auto 30px auto;
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 0 24px rgba(0,0,0,0.4);
+  display: block;
+}
+
+.episodes p {
+  margin-bottom: 2rem;
+}
+
+.chart-section {
+  margin-bottom: 1.5rem; /* Decrease this value for less space */
+}
+
+.gallery {
+  margin-top: 1.5rem; /* Decrease this as needed */
+}

@@ -52,8 +52,7 @@
   <section class="chart-section">
   <h2>Live Donation Volatility</h2>
   <p id="live-total" style="font-size: 2em; color: #4caf50;">€0</p>
-  <canvas id="crowdChart"></canvas>
-</section>
+  <canvas id="crowdChart" width="900" height="350"></canvas></section>
 
   <section class="gallery">
     <h2>Behind the Scenes</h2>
@@ -63,7 +62,8 @@
 <!--episode section--> 
 
 <section class="episodes">
-  <h2>Fund Individual Episodes</h2>
+  <h2>Fund Individual Episodes / Business</h2>
+  <p>Each episode is a unique story that needs your support to come to life. Click on an episode to fund it directly.</p>
 
   <!-- Repeat for each episode -->
   <div class="episode">
@@ -135,44 +135,30 @@ async function fetchDonations() {
   return res.json();
 }
 
-function formatDate(dateStr) {
-  // Mollie gives UTC ISO, convert to date only
-  const d = new Date(dateStr);
-  return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
-}
-
 async function updateChart() {
   const data = await fetchDonations();
 
-  // Aggregate donations per day (or per hour if you want more "volatility")
-  const donationsByDate = {};
   let total = 0;
-  data.forEach(d => {
-    const date = formatDate(d.paidAt || d.createdAt || d.createdDatetime);
-    const amount = parseFloat(d.amount.value);
-    total += amount;
-    donationsByDate[date] = (donationsByDate[date] || 0) + amount;
+  const labels = data.map(d => {
+    total += parseFloat(d.amount.value);
+    return d.description || (d.metadata && d.metadata.order_id) || 'Donation';
   });
+  const amounts = data.map(d => parseFloat(d.amount.value));
 
   document.getElementById('live-total').innerText = `€${total.toLocaleString()}`;
 
-  const labels = Object.keys(donationsByDate);
-  const amounts = Object.values(donationsByDate);
-
   if (window.crowdChartInstance) {
-    // Update existing chart
     window.crowdChartInstance.data.labels = labels;
     window.crowdChartInstance.data.datasets[0].data = amounts;
     window.crowdChartInstance.update();
   } else {
-    // Create new chart
     const ctx = document.getElementById('crowdChart').getContext('2d');
     window.crowdChartInstance = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labels,
         datasets: [{
-          label: 'Donations (€) per day',
+          label: 'Donation Amount (€)',
           data: amounts,
           borderWidth: 2
         }]
@@ -186,9 +172,9 @@ async function updateChart() {
   }
 }
 
-// Update chart every 10 seconds (live!)
 setInterval(updateChart, 10000);
 updateChart();
+
 </script>
 
 
