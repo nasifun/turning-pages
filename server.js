@@ -45,32 +45,45 @@ const transporter = nodemailer.createTransport({
 // Handle form submission
 app.post('/submit', async (req, res) => {
   try {
-    console.log("POST /submit hit");
+    console.log("POST /submit hit:", req.body); // Logs your form data
+
     const { episode, fullName, address, company, email, phone, kvk } = req.body;
-    console.log("Form data:", req.body);
 
-    const newInvestor = new Investor({ episode, fullName, address, company, email, phone, kvk });
-    await newInvestor.save();
-    console.log("Saved to MongoDB");
+    // Try saving to MongoDB
+    try {
+      const newInvestor = new Investor({ episode, fullName, address, company, email, phone, kvk });
+      await newInvestor.save();
+      console.log("✅ Saved to MongoDB");
+    } catch (dbErr) {
+      console.error('❌ MongoDB error:', dbErr);
+      return res.status(500).json({ error: 'Failed to save to MongoDB', details: dbErr.message });
+    }
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: 'Turning Point TV Series – Investment Confirmation',
-      html: `<p>Dear ${fullName},</p>
-             <p>Thank you for funding <strong>${episode}</strong> of the Turning Point TV Series.</p>
-             <p>Your details have been securely received.</p>
-             <p>– Turning Point Production Team</p>`
-    };
-    await transporter.sendMail(mailOptions);
-    console.log("Email sent!");
+    // Try sending mail
+    try {
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Turning Point TV Series – Investment Confirmation',
+        html: `<p>Dear ${fullName},</p>
+               <p>Thank you for funding <strong>${episode}</strong> of the Turning Point TV Series.</p>
+               <p>Your details have been securely received.</p>
+               <p>– Turning Point Production Team</p>`
+      };
+      await transporter.sendMail(mailOptions);
+      console.log("📧 Confirmation email sent");
+    } catch (mailErr) {
+      console.error('❌ Email error:', mailErr);
+      return res.status(500).json({ error: 'Failed to send email', details: mailErr.message });
+    }
 
     res.status(200).json({ message: 'Submitted successfully!' });
   } catch (error) {
-    console.error('❌ SERVER ERROR:', error);
-    res.status(500).json({ error: 'Server error. Please try again later.' });
+    console.error('❌ General Server Error:', error);
+    res.status(500).json({ error: 'Server error. Please try again later.', details: error.message });
   }
 });
+
 
 // Mollie API integration — for LIVE donation chart
 app.get('/api/donations', async (req, res) => {
